@@ -1,8 +1,7 @@
-// src/components/Header.js
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-const Header = () => {
+const Header = ({ isLoggedIn, handleLogout }) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand href="/">DrGarden</Navbar.Brand>
@@ -24,6 +23,20 @@ const Header = () => {
           <NavItem>
             <Nav.Link href="/contact">Contact Us</Nav.Link>
           </NavItem>
+          {isLoggedIn ? (
+            <NavItem>
+              <Nav.Link href="#" onClick={handleLogout}>Logout</Nav.Link>
+            </NavItem>
+          ) : (
+            <>
+              <NavItem>
+                <Nav.Link href="/login">Login</Nav.Link>
+              </NavItem>
+              <NavItem>
+                <Nav.Link href="/register">Register</Nav.Link>
+              </NavItem>
+            </>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
